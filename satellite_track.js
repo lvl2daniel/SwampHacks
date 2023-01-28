@@ -31,6 +31,7 @@ const getSat = (sat) => {
 }
 
 export const printSats = () => {
+    LOCAL_PROXY = true;
     sats.forEach((sat) => {
         fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => console.log(res));
     });
@@ -51,7 +52,7 @@ const getSatelliteData = () => {
 
 // Fetches satellite data from API and return Satellite object containing relevant info
 async function fetchSatData(id, proxy) {
-    prefix = (proxy) ? '/localhost:8080/' : '';
+    let prefix = (proxy) ? '/localhost:8080/' : '';
     let response = await fetch('http:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
     let data = await response.text();
     let jsoned = JSON.parse(data);
