@@ -10,21 +10,22 @@ const scene = new THREE.Scene();
 const camera = new THREE.
     PerspectiveCamera(
         75,
-        window.innerWidth / window.innerHeight,
+        window.innerWidth/2 / window.innerHeight,
         0.1,
         1000
     );
     const renderer = new THREE.WebGLRenderer(
         {
-            antialias: true
-        
+            antialias: true,
+            canvas: document.querySelector('canvas')
         }
     );
+    const canvasContainer = document.querySelector('#canvasContainer')
     scene.background = new THREE.TextureLoader().load('./img/starz.jpg');
     console.log(scene);
     console.log(camera);
     console.log(renderer);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearAlpha(100);
     renderer.shadowMap.enabled = true;
@@ -32,8 +33,6 @@ const camera = new THREE.
     const light = new THREE.AmbientLight( 0xCFD1CC);
     scene.add( light );
     
-    document.body.appendChild(renderer.
-        domElement);
     const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(5, 100, 100),
     new THREE.MeshStandardMaterial({
@@ -41,7 +40,7 @@ const camera = new THREE.
         
     }))
     scene.add(sphere);
-    function createObject(xCoord, yCoord, zCoord, img, name){
+    function createObject(xCoord, yCoord, zCoord, name){
         const newSattelite = new THREE.Mesh(
             new THREE.ConeGeometry(.1, .05, 3, 1),
             new THREE.MeshBasicMaterial({color: 0xff0000})
