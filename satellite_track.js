@@ -36,6 +36,15 @@ export const printSats = () => {
     });
 }
 
+export const appendSatArray = () => {
+    
+    let satArray = [];
+    sats.forEach((sat) => {
+        fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => satArray.push(res));
+    });
+    return satArray;
+}
+
 const getSatelliteData = () => {
     sats.forEach((sat) )
 }
