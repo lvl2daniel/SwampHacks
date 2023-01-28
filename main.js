@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { Object3D, RGBADepthPacking } from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { printSats } from './satellite_track.js';
 //import vertexShader from './shaders/vertex.glsl'
@@ -19,7 +20,7 @@ const camera = new THREE.
         
         }
     );
-    scene.background = new THREE.TextureLoader().load('starz.jpg');
+    scene.background = new THREE.TextureLoader().load('./img/starz.jpg');
     console.log(scene);
     console.log(camera);
     console.log(renderer);
@@ -28,14 +29,8 @@ const camera = new THREE.
     renderer.setClearAlpha(100);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    const light = new THREE.DirectionalLight( 0xffffff, 1.2);
-    light.position.set( -.45, .67, .40 ); //default; light shining from top
-    light.castShadow = true; // default false
+    const light = new THREE.AmbientLight( 0xCFD1CC);
     scene.add( light );
-    light.shadow.mapSize.width = 512; // default
-    light.shadow.mapSize.height = 512; // default
-    light.shadow.camera.near = 0.5; // default
-    light.shadow.camera.far = 500; // default
     
     document.body.appendChild(renderer.
         domElement);
@@ -45,26 +40,32 @@ const camera = new THREE.
         map: new THREE.TextureLoader().load('./img/16kearth.jpg')
         
     }))
-    function createObject(xCoord, yCoord, zCoord, img, name){
-        const name = new THREE.Mesh(
-
-        )
-
-
-    }
     scene.add(sphere);
+    function createObject(xCoord, yCoord, zCoord, img, name){
+        const newSattelite = new THREE.Mesh(
+            new THREE.ConeGeometry(.1, .05, 3, 1),
+            new THREE.MeshBasicMaterial({color: 0xff0000})
+        )
+        const a = new THREE.Vector3(3, 3, 3)
+        newSattelite.translateX(xCoord);
+        newSattelite.translateY(yCoord);
+        newSattelite.translateZ(zCoord);
+        name = newSattelite;
+        console.log(name);
+        scene.add(name);
+    }
     camera.position.z = 10
     console.log(sphere);
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = false;
     controls.dampingFactor = .5;
     controls.enablePan = false;
-    
+    createObject(4, 4, 3.3, 3, 'newSat');
 
     function animate() {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
-        sphere.rotation.x += .0005;
+        //sphere.rotation.x += .0005;
         //sphere.rotation.y += .001;
     }
     animate();
