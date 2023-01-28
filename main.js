@@ -47,7 +47,7 @@ const camera = new THREE.
     }))
     function createObject(xCoord, yCoord, zCoord, img, name){
         const name = new THREE.Mesh(
-            new THREE.
+
         )
 
 
