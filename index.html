@@ -6,8 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel = "stylesheet" href = "styles.css">
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.module.js"
+    }
+  }
+</script>
+
+<script type="module">
+
+  import * as THREE from 'three';
+
+
+
+</script>
 </head>
 <body>
-    <div class = "globe"><img class = "globeimg" src = "globe.jpg"></div>
 </body>
+<script type="module" src = "main.js"></script>
 </html>
