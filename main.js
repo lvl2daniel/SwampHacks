@@ -1,7 +1,9 @@
 import * as THREE from 'three'
+import { printSats } from './satellite_track.js';
 //import vertexShader from './shaders/vertex.glsl'
 //import fragmentShader from './shaders/fragment.glsl'
 
+printSats();
 const scene = new THREE.Scene();
 const camera = new THREE.
     PerspectiveCamera(
@@ -37,14 +39,14 @@ const camera = new THREE.
     const plane = new THREE.Mesh(
         new THREE.PlaneGeometry(150,150,1000,1000),
         new THREE.MeshStandardMaterial({
-            map: new THREE.TextureLoader().load('starz.jpg')
+            map: new THREE.TextureLoader().load('./img/starz.jpg')
         })
     )
     plane.receiveShadow = false;
     const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(8, 900, 900),
     new THREE.MeshStandardMaterial({
-        map: new THREE.TextureLoader().load('16kearth.jpg')
+        map: new THREE.TextureLoader().load('./img/16kearth.jpg')
         
     }))
 
