@@ -37,17 +37,12 @@ export const printSats = () => {
     });
 }
 
-export const appendSatArray = () => {
-    
-    let satArray = [];
+// 
+export const appendSatArray = (arr) => {
     sats.forEach((sat) => {
-        fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => satArray.push(res));
+        fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => arr.push(res));
     });
-    return satArray;
-}
-
-const getSatelliteData = () => {
-    sats.forEach((sat) )
+    return arr;
 }
 
 // Fetches satellite data from API and return Satellite object containing relevant info
