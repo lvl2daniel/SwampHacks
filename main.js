@@ -1,8 +1,10 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { printSats } from './satellite_track.js';
 //import vertexShader from './shaders/vertex.glsl'
 //import fragmentShader from './shaders/fragment.glsl'
 
+printSats();
 const scene = new THREE.Scene();
 const camera = new THREE.
     PerspectiveCamera(
@@ -37,11 +39,10 @@ const camera = new THREE.
     
     document.body.appendChild(renderer.
         domElement);
-
     const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(5, 100, 100),
     new THREE.MeshStandardMaterial({
-        map: new THREE.TextureLoader().load('16kearth.jpg')
+        map: new THREE.TextureLoader().load('./img/16kearth.jpg')
         
     }))
     function createObject(xCoord, yCoord, zCoord, img, name){
