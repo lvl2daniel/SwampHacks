@@ -1,3 +1,4 @@
+
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
 const API_KEY = 'DLN4MT-FSAJLH-SUJFHN-4ZFE';
 
@@ -30,15 +31,16 @@ const getSat = (sat) => {
     }
 }
 
+// Debug function
 export const printSats = () => {
-    LOCAL_PROXY = true;
     sats.forEach((sat) => {
         fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => console.log(res));
     });
 }
 
-// 
-export const appendSatArray = (arr) => {
+// Create array of each satellites updated position
+export async function appendSatArray() {
+    let arr = [];
     sats.forEach((sat) => {
         fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => arr.push(res));
     });
@@ -70,6 +72,16 @@ const getSpeed = (lat1, lon1, lat2, lon2) => {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
     return (d * 1000) + 1000; // Meters
+}
+
+export const calcPosFromLatLon = (lat, lon) => {
+    var phi   = (90-lat)*(Math.PI/180);
+    var theta = (lon+180)*(Math.PI/180);
+
+    let x = -(5 * Math.sin(phi)*Math.cos(theta));
+    let y = (5 * Math.cos(phi));
+  
+    return [x,y];
 }
 
 
