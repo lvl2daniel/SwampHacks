@@ -1,0 +1,17 @@
+body {
+    background-image:url("space.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.globe {
+}
+
+.globeimg {
+    width: 400px;
+    height: 400px;
+}
