@@ -1,6 +1,6 @@
 
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
-const API_KEY = 'DFR6NN-6P5UNQ-RDET2G-4ZGD';
+const API_KEY = 'KCVZM4-3R58EF-Z427RQ-4ZGF';
 
 // Set to true for local development
 let LOCAL_PROXY = true; 
@@ -13,6 +13,8 @@ function Satellite(name, id, lon, lat, speed) {
     this.lat = lat;
     this.speed = speed;
 }
+
+let arr = [];
 
 // Array for each satellite that represents its NORAD #
 const sats = ['JWST', 'ISS', 'STARLINK-5196', 'NOAA', 'AQUA','KMS-4','SUOMI NPP',
@@ -72,10 +74,9 @@ export const printSats = () => {
 
 // Create array of each satellites updated position
 export async function appendSatArray() {
-    let arr = [];
-    sats.forEach((sat) => {
-        fetchSatData(getSat(sat), LOCAL_PROXY).then((res) => arr.push(res));
-    });
+    for (let i = 0; i < 5; i++) {
+        arr[i] = await fetchSatData(getSat(sats[i]), LOCAL_PROXY);
+    }
     return arr;
 }
 
@@ -107,8 +108,6 @@ const getSpeed = (lat1, lon1, lat2, lon2) => {
 }
 
 export function calcPosFromLatLon(lat,lon,radius){
-    console.log("long = " + lon);
-    console.log("lat = " + lat);
     var phi   = (90-lat)*(Math.PI/180);
     var theta = (lon+180)*(Math.PI/180);
     
