@@ -23,6 +23,7 @@ body {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     opacity: .6;
     width: 20%;
+    min-width: 18rem;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,6 +31,11 @@ body {
     align-items: center;
 }
 
-sl-icon {
-
+.drawer-img {
+    margin-bottom: 15px;
 }
+
+.drawer-data {
+    margin-bottom: 10px;
+}
+

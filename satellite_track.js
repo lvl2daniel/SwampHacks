@@ -15,7 +15,7 @@ function Satellite(name, id, lon, lat, speed) {
 }
 
 // Array for each satellite that represents its NORAD #
-const sats = ['JWST', 'ISS', 'STARLINK-5196', 'NOAA', 'AQUA','DRAGON ENDURANCE 2','SUOMI NPP',
+const sats = ['JWST', 'ISS', 'STARLINK-5196', 'NOAA-19', 'AQUA','DRAGON ENDURANCE 2','SUOMI NPP',
               'METOP-B','SZ-15','TERRA','USA-338','USA-276','TK-1',
               'METEOR M2','PROGRESS MS-21','LANDSAT','SWOT','SENTINEL-6',
                'ICON','PRISMA'];
@@ -27,7 +27,7 @@ const getSat = (sat) => {
             return 25994;
         case 'ISS':
             return 25544;
-        case 'NOAA':
+        case 'NOAA-19':
             return 43013;
         case 'AQUA':
             return 27424;
