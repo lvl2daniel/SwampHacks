@@ -30,18 +30,11 @@
     <div class="panel">
         <h1>SATTrack</h1>        
         <sl-button class="open-drawer">Open Drawer</sl-button>
-        <sl-menu style="width: 200px;">
-            <sl-menu-item value="JWST">JWST<sl-icon slot="suffix" name=""></sl-icon></sl-menu-item>
-            <sl-icon name="exclamation-triangle"></sl-icon>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="ISS">ISS</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="AQUA">AQUA 20</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="LANDSAT">Landsat</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="NOAA">NOAA</sl-menu-item>
-          </sl-menu>   
+        <sl-select label="Select one">
+            <sl-option value="option-1">JWST</sl-option>
+            <sl-option value="option-2">ISS</sl-option>
+            <sl-option value="option-3">AQUA 20</sl-option>
+          </sl-select>
     </div>
     <div class = 'wrapper'>
         <canvas class="interactive" id = 'canvasContainer'></canvas>
