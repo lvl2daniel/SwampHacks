@@ -3,7 +3,7 @@
 const API_KEY = '48EGY4-4JLU5K-V2RLTF-4ZG9';
 
 // Set to true for local development
-let LOCAL_PROXY = true; 
+let LOCAL_PROXY = false; 
 
 // Constructor for satellite objects
 function Satellite(name, id, lon, lat, speed) {
