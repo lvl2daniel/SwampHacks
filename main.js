@@ -45,8 +45,10 @@ scene.add(sphere);
 
 function createObject(xCoord, yCoord, zCoord, name){
     const newSatellite = new THREE.Mesh(
-        new THREE.ConeGeometry(.08, .05, 4, 2),
-        new THREE.MeshBasicMaterial({color: 0xff0000})
+        new THREE.SphereGeometry(.08, 5, 5),
+        new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('./img/trippy-min.jpg')
+        })
     )
     const a = new THREE.Vector3(3, 3, 3)
     newSatellite.translateX(xCoord);
@@ -126,6 +128,13 @@ function animate() {
     render();
     //sphere.rotation.x += .0002;
     //sphere.rotation.y += .001;
+    sat1.rotation.x += .002;
+    sat1.rotation.y += .002;
+    sat1.rotation.z += .002;
+    for (let i = 0; i < arr.length; i++){
+        //SatArr[i].rotation.x += .003;
+        SatArr[i].color = red;
+    }
 }
 animate();
 
@@ -137,7 +146,7 @@ console.log(openButton);
 openButton.addEventListener('click', () => drawer.show());
 closeButton.addEventListener('click', () => drawer.hide());
 
-/*setInterval(function () {
+setInterval(function () {
     update()
 }, 4000);
 
@@ -148,10 +157,10 @@ setInterval(function (){
 setInterval(function () {
     for (let i = 0; i < arr.length; i++)
         {
-            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5);
+            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
             updateObject(SatArr[i], result[0], result[1], result[2])
         }
 }, 5000);
-*/
+
 
      

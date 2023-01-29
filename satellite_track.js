@@ -1,6 +1,6 @@
 
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
-const API_KEY = 'MSX3S6-ZDL6SU-N54VB8-4ZFF';
+const API_KEY = 'DFR6NN-6P5UNQ-RDET2G-4ZGD';
 
 // Set to true for local development
 let LOCAL_PROXY = true; 
