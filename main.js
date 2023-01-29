@@ -47,18 +47,23 @@ new THREE.MeshStandardMaterial({
 scene.add(sphere);
 
 function createObject(xCoord, yCoord, zCoord, name){
-    const newSattelite = new THREE.Mesh(
+    const newSatellite = new THREE.Mesh(
         new THREE.ConeGeometry(.1, .05, 3, 1),
         new THREE.MeshBasicMaterial({color: 0xff0000})
     )
     const a = new THREE.Vector3(3, 3, 3)
-    newSattelite.translateX(xCoord);
-    newSattelite.translateY(yCoord);
-    newSattelite.translateZ(zCoord);
-    name = newSattelite;
-    console.log(name);
-    scene.add(name);
+    newSatellite.translateX(xCoord);
+    newSatellite.translateY(yCoord);
+    newSatellite.translateZ(zCoord);
+    console.log(newSatellite);
+    scene.add(newSatellite);
+
+    return newSatellite
 }
+function updateObject(Object, xCoord, yCoord, zCoord) {
+    Object.position.set(xCoord, yCoord, zCoord);
+}
+const Sat1 = createObject(0, 0, 0, 'newSat');
 
 camera.position.z = 10
 console.log(sphere);
@@ -66,7 +71,6 @@ const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = false;
 controls.dampingFactor = .5;
 controls.enablePan = false;
-createObject(4, 4, 3.3, 3, 'newSat');
 
 function animate() {
     requestAnimationFrame(animate);
@@ -81,7 +85,8 @@ setTimeout(function () {
 }, 2000);
 
 setTimeout(function () {
-    let result = calcPosFromLatLon(arr[0].lat, arr[0].lon);
-    console.log(result);
+    let result = calcPosFromLatLon(arr[0].lat, arr[0].lon, 5);
+    updateObject(Sat1, result[0], result[1], result[2]);
 }, 5000);
+
      

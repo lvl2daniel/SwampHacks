@@ -74,15 +74,16 @@ const getSpeed = (lat1, lon1, lat2, lon2) => {
     return (d * 1000) + 1000; // Meters
 }
 
-export const calcPosFromLatLon = (lat, lon) => {
+export function calcPosFromLatLon(lat,lon,radius){
     var phi   = (90-lat)*(Math.PI/180);
     var theta = (lon+180)*(Math.PI/180);
-
-    let x = -(5 * Math.sin(phi)*Math.cos(theta));
-    let y = (5 * Math.cos(phi));
-  
-    return [x,y];
+    
+    let x = -((radius) * Math.sin(phi)*Math.cos(theta));
+    let z = ((radius) * Math.sin(phi)*Math.sin(theta));
+    let y = ((radius) * Math.cos(phi));
+       
+    console.log([x,y,z]);
+    return [x,y,z];
 }
-
 
 
