@@ -37,8 +37,8 @@ const getSat = (sat) => {
             return 37849;
         case 'METOP-B':
             return 38771;
-        case 'SZ-15':
-            return 54379;
+        case 'CSS':
+            return 48274;
         case 'STARLINK-5196':
             return 55319;
         case 'USA-338':
@@ -47,8 +47,8 @@ const getSat = (sat) => {
             return 42869;
         case 'TK-1':
             return 42061;
-        case 'DRAGON ENDURANCE 2':
-            return  53963;
+        case 'KMS-4':
+            return  41332;
         case 'PROGRESS MS-21':
             return 54155;
         case 'JWST':
