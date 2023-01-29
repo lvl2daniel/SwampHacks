@@ -6,11 +6,6 @@ import { printSats, appendSatArray, calcPosFromLatLon } from './satellite_track.
 const canvasContainer = document.querySelector('#canvasContainer')
 
 let arr = [];
-async function update() {
-    arr = await appendSatArray();
-    await console.log(arr);
-    await updateTracking(arr);
-}
 
 const scene = new THREE.Scene();
 const camera = new THREE.
@@ -63,7 +58,6 @@ function createObject(xCoord, yCoord, zCoord, name){
 function updateObject(Object, xCoord, yCoord, zCoord) {
     Object.position.set(xCoord, yCoord, zCoord);
 }
-let sat1 = createObject(5, 3, 3, 'test');
 
 const SatArr = [];
 function initialize() {
@@ -105,7 +99,7 @@ function render() {
 
 	for (let i = 0; i < intersects.length; i++) {
         if (!intersects[i].object.geometry.type == "SphereGeometry") {
-            console.log(intersects[i]);
+            console.log('adfjkald;fjdkal;s');
         }
 	}
 
@@ -130,12 +124,9 @@ function animate() {
     render();
     //sphere.rotation.x += .0002;
     //sphere.rotation.y += .001;
-    sat1.rotation.x += .002;
-    sat1.rotation.y += .002;
-    sat1.rotation.z += .002;
     for (let i = 0; i < arr.length; i++){
         //SatArr[i].rotation.x += .003;
-        SatArr[i].color = red;
+        //SatArr[i].color = red;
     }
 }
 animate();
@@ -291,15 +282,22 @@ const updateDrawer = (name) => {
 
 const updateTracking = (arr) => {
     for (let i=0; i < arr.length; i++) {
-        console.log(arr[i]);
         if (arr[i].name == selected) {
             console.log('found');
         }
     }
 }
 
-setTimeout(function () {
-    update()
+setInterval(async function () {
+    arr = await appendSatArray();
+    console.log(arr);
+    initialize(arr);
+    updateTracking(arr);
+    for (let i = 0; i < arr.length; i++)
+        {
+            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
+            updateObject(SatArr[i], result[0], result[1], result[2])
+        }
 }, 4000);
 
 setInterval(function (){
@@ -312,5 +310,5 @@ setInterval(function () {
             let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
             updateObject(SatArr[i], result[0], result[1], result[2])
         }
-}, 5000);
+}, 5000);*/
 
