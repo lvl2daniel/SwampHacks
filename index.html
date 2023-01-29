@@ -28,20 +28,29 @@
 </head>
 <body>
     <div class="panel">
-        <h1>SATTrack</h1>        
-        <sl-button class="open-drawer">Open Drawer</sl-button>
-        <sl-menu style="width: 200px;">
-            <sl-menu-item value="JWST">JWST<sl-icon slot="suffix" name=""></sl-icon></sl-menu-item>
-            <sl-icon name="exclamation-triangle"></sl-icon>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="ISS">ISS</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="AQUA">AQUA 20</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="LANDSAT">Landsat</sl-menu-item>
-            <sl-divider></sl-divider>
-            <sl-menu-item value="NOAA">NOAA</sl-menu-item>
-          </sl-menu>   
+      <sl-select label="Select a Satellite" value="JWST">
+          <sl-option value="JWST">JWST</sl-option>
+          <sl-option value="ISS">ISS</sl-option>
+          <sl-option value="STARLINK-5196">STARLINK-5196</sl-option>
+          <sl-option value="NOAA">NOAA</sl-option>
+          <sl-option value="AQUA">AQUA</sl-option>
+          <sl-option value="KMS-4">KMS-4</sl-option>
+          <sl-option value="SUOMI NPP">SUOMI NPP</sl-option>
+          <sl-option value="METOP-B">METOP-B</sl-option>
+          <sl-option value="CSS">CSS</sl-option>
+          <sl-option value="TERRA">TERRA</sl-option>
+          <sl-option value="USA-338">USA-338</sl-option>
+          <sl-option value="USA-276">USA-276</sl-option>
+          <sl-option value="TK-1">TK-1</sl-option>
+          <sl-option value="METEOR M2">METEOR M2</sl-option>
+          <sl-option value="PROGRESS MS-21">PROGRESS MS-21</sl-option>
+          <sl-option value="LANDSAT">LANDSAT</sl-option>
+          <sl-option value="SWOT">SWOT</sl-option>
+          <sl-option value="SENTINEL-6">SENTINEL-6</sl-option>
+          <sl-option value="ICON">ICON</sl-option>
+          <sl-option value="PRISMA">PRISMA</sl-option>
+        </sl-select>
+        <sl-button class="open-drawer">Git Info</sl-button>  
           <embed src = "Light Awash.mp3" loop="true" autostart="true" height="0" width="0">
     </div>
     <div class = 'wrapper'>
