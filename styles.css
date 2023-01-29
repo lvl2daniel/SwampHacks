@@ -34,6 +34,8 @@ body {
 
 .drawer-img {
     margin-bottom: 15px;
+    height: 350px;
+    width: 350px;
 }
 
 .drawer-data {
