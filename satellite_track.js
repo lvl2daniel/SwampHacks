@@ -1,6 +1,6 @@
 
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
-const API_KEY = 'KCVZM4-3R58EF-Z427RQ-4ZGF';
+const API_KEY = 'ZDGVLG-BBSDGG-E737WY-4ZGA';
 
 // Set to true for local development
 let LOCAL_PROXY = true; 
@@ -17,7 +17,7 @@ function Satellite(name, id, lon, lat, speed) {
 let arr = [];
 
 // Array for each satellite that represents its NORAD #
-const sats = ['JWST', 'ISS', 'STARLINK-5196', 'NOAA', 'AQUA','KMS-4','SUOMI NPP',
+const sats = ['ISS', 'JWST', 'STARLINK-5196', 'NOAA', 'AQUA','KMS-4','SUOMI NPP',
               'METOP-B','CSS','TERRA','USA-338','USA-276','TK-1',
               'METEOR M2','NAVSTAR 81','LANDSAT 9','SWOT','SENTINEL-6',
                'ICON','PRISMA'];

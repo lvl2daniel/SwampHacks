@@ -3,9 +3,11 @@ import { Object3D, RGBADepthPacking, SphereGeometry } from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { printSats, appendSatArray, calcPosFromLatLon } from './satellite_track.js';
 
-const canvasContainer = document.querySelector('#canvasContainer')
+const canvasContainer = document.querySelector('#canvasContainer');
 
 let arr = [];
+let paths = [];
+let first_call = true;
 
 const scene = new THREE.Scene();
 const camera = new THREE.
@@ -59,12 +61,22 @@ function updateObject(Object, xCoord, yCoord, zCoord) {
     Object.position.set(xCoord, yCoord, zCoord);
 }
 
-const SatArr = [];
+
+let SatArr = [];
 function initialize() {
     for (let i = 0; i<arr.length; i++)
     {
-        let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5)
-        SatArr[i] = createObject(result[0], result[1], 5)
+        let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5);
+        let z = 5;
+        if (arr[i].name == 'JWST') {
+            z = 8;
+        }
+        const obj = createObject(result[0], result[1], z);
+        if (obj) {
+            paths[i].push(obj);
+            SatArr[i] = obj;
+        }
+        
     }
 }
 
@@ -124,9 +136,14 @@ function animate() {
     render();
     //sphere.rotation.x += .0002;
     //sphere.rotation.y += .001;
-    for (let i = 0; i < arr.length; i++){
-        //SatArr[i].rotation.x += .003;
-        //SatArr[i].color = red;
+    for (let i = 0; i < SatArr.length; i++){
+        SatArr[i].rotation.x += .003;
+        if (arr[i].name == selected) {
+            SatArr[i].material.color.setHex(0xff0000);
+            for (let j = 0; j < paths[i].length; j++) {
+                SatArr[i].material.color.setHex(0xff0000);
+            }
+        }
     }
 }
 animate();
@@ -140,7 +157,7 @@ const info_img = document.querySelector('.drawer-img');
 const info_date = document.querySelector('.date');
 const info_type = document.querySelector('.type')
 const info_content = document.querySelector('.drawer-content');
-let selected = 'JWST';
+let selected = 'ISS';
       
 openButton.addEventListener('click', () => drawer.show());
 closeButton.addEventListener('click', () => drawer.hide());
@@ -149,8 +166,20 @@ closeButton.addEventListener('click', () => drawer.hide());
 const selector = document.querySelector('.selector');
 selector.addEventListener('sl-change', () => {
     updateDrawer(selector.value);
+    resetColor(selected, 0xffffff);
     selected = selector.value;
+    resetColor(selected, 0xff0000)
 });
+
+const resetColor = (name, color) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].name == name) {
+            for (let j = 0; j < paths[i].length; j++) {
+                paths[i][j].material.color.setHex(color);
+            }
+        }
+    }
+}
 
 const updateDrawer = (name) => {
     info_title.textContent = name;
@@ -278,7 +307,7 @@ const updateDrawer = (name) => {
             info_content.textContent = 'The PRISMA is an ISA technology demonstrator satellite developed to deliver hyperspectral products to space. ';
             info_img.src = './img/PRISMA.jpeg'
             return;
-}
+        }
 };
 
 // Handle lon/lat/speed tracking
@@ -288,7 +317,7 @@ const speed = document.querySelector('.speed');
 const updateTracking = (arr) => {
     for (let i=0; i < arr.length; i++) {
         if (arr[i].name == selected) {
-            console.log(arr[i]);
+            console.log('update');
             longitude.textContent = arr[i].lon;
             latitude.textContent = arr[i].lat;
             speed.textContent = arr[i].speed;
@@ -298,13 +327,21 @@ const updateTracking = (arr) => {
 
 setInterval(async function () {
     arr = await appendSatArray();
-    console.log(arr);
+    if (first_call) {
+        for (let i = 0; i < arr.length; i++) {
+            let nodes = [];
+            paths.push(nodes);
+        }
+    }
+    first_call = false;
     initialize(arr);
     updateTracking(arr);
     for (let i = 0; i < arr.length; i++)
-        {
-            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
-            updateObject(SatArr[i], result[0], result[1], result[2])
-        }
+    {
+        let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
+        updateObject(SatArr[i], result[0], result[1], result[2])
+        
+    }
+    
 }, 4000);
 
