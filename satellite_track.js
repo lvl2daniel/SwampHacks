@@ -83,7 +83,7 @@ export async function appendSatArray() {
 // Fetches satellite data from API and return Satellite object containing relevant info
 async function fetchSatData(id, proxy, index) {
     let prefix = (proxy) ? '/localhost:8080/' : '';
-    let response = await fetch('http:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
+    let response = await fetch('https:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
     let data = await response.text();
     let jsoned = JSON.parse(data);
     let cord1 = jsoned.positions[0];
