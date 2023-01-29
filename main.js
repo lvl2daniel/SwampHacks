@@ -48,7 +48,7 @@ scene.add(sphere);
 
 function createObject(xCoord, yCoord, zCoord, name){
     const newSatellite = new THREE.Mesh(
-        new THREE.ConeGeometry(.1, .05, 3, 1),
+        new THREE.ConeGeometry(.05, .025, 3, 1),
         new THREE.MeshBasicMaterial({color: 0xff0000})
     )
     const a = new THREE.Vector3(3, 3, 3)
@@ -63,7 +63,15 @@ function createObject(xCoord, yCoord, zCoord, name){
 function updateObject(Object, xCoord, yCoord, zCoord) {
     Object.position.set(xCoord, yCoord, zCoord);
 }
-const Sat1 = createObject(0, 0, 0, 'newSat');
+const SatArr = [];
+function initialize() {
+    for (let i = 0; i<arr.length; i++)
+    {
+        let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5)
+        SatArr[i] = createObject(i+5, i+6, i+7)
+        console.log(SatArr[i]);
+    }
+}
 
 camera.position.z = 10
 console.log(sphere);
@@ -80,13 +88,20 @@ function animate() {
 }
 animate();
 
-setTimeout(function () {
+setInterval(function () {
     update()
-}, 2000);
+}, 4000);
 
-setTimeout(function () {
-    let result = calcPosFromLatLon(arr[0].lat, arr[0].lon, 5);
-    updateObject(Sat1, result[0], result[1], result[2]);
+setInterval(function (){
+    initialize()
+}, 5000);
+
+setInterval(function () {
+    for (let i = 0; i < arr.length; i++)
+        {
+            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.2);
+            updateObject(SatArr[i], result[0], result[1], result[2])
+        }
 }, 5000);
 
      
