@@ -70,3 +70,11 @@ body {
     width: 80%;
     border: solid white 1px;
 }
+
+.footer {
+    margin-top: auto;
+    width: fit-content;
+    font-size: xx-large;
+
+
+}
