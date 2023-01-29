@@ -8,6 +8,7 @@ const canvasContainer = document.querySelector('#canvasContainer')
 let arr = [];
 async function update() {
     arr = await appendSatArray();
+    updateTra
 }
 
 const scene = new THREE.Scene();
@@ -138,19 +139,34 @@ function animate() {
 }
 animate();
 
+// Handle info drawer 
 const drawer = document.querySelector('.drawer-overview');
 const openButton = document.querySelector('.open-drawer');
-const closeButton = drawer.querySelector('sl-button[variant="primary"]');
+const closeButton = document.querySelector('sl-button[variant="primary"]');
+const info_title = document.querySelector('.drawer-title');
+const info_img = document.querySelector('.drawer-img');
+const info_date = document.querySelector('.date');
+const info_content = document.querySelector('.drawer-content');
       
 console.log(openButton);
 openButton.addEventListener('click', () => drawer.show());
 closeButton.addEventListener('click', () => drawer.hide());
 
-setInterval(function () {
+// Handle selector
+const selector = document.querySelector('.selector');
+selector.addEventListener('sl-change', () => {
+    updateDrawer(selector.value);
+});
+
+const updateDrawer = (name) => {
+    info_title.textContent = name;
+};
+
+setTimeout(function () {
     update()
 }, 4000);
 
-setInterval(function (){
+/*setInterval(function (){
     initialize()
 }, 5000);
 

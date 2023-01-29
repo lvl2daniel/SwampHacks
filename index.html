@@ -28,36 +28,47 @@
 </head>
 <body>
     <div class="panel">
-      <sl-select label="Select a Satellite" value="JWST">
+      <h1>StatTrack</h1>
+      <sl-select class="selector" label="Select a Satellite" value="JWST">
           <sl-option value="JWST">JWST</sl-option>
           <sl-option value="ISS">ISS</sl-option>
           <sl-option value="STARLINK-5196">STARLINK-5196</sl-option>
-          <sl-option value="NOAA">NOAA</sl-option>
+          <sl-option value="NOAA-19">NOAA 19</sl-option>
           <sl-option value="AQUA">AQUA</sl-option>
-          <sl-option value="KMS-4">KMS-4</sl-option>
-          <sl-option value="SUOMI NPP">SUOMI NPP</sl-option>
+          <sl-option value="DRAGON_ENDURANCE_2">DRAGON ENDURANCE 2</sl-option>
+          <sl-option value="SUOMI_NPP">SUOMI NPP</sl-option>
           <sl-option value="METOP-B">METOP-B</sl-option>
           <sl-option value="CSS">CSS</sl-option>
           <sl-option value="TERRA">TERRA</sl-option>
           <sl-option value="USA-338">USA-338</sl-option>
           <sl-option value="USA-276">USA-276</sl-option>
           <sl-option value="TK-1">TK-1</sl-option>
-          <sl-option value="METEOR M2">METEOR M2</sl-option>
-          <sl-option value="PROGRESS MS-21">PROGRESS MS-21</sl-option>
+          <sl-option value="METEOR-M2">METEOR M2</sl-option>
+          <sl-option value="PROGRESS_MS-21">PROGRESS MS-21</sl-option>
           <sl-option value="LANDSAT">LANDSAT</sl-option>
           <sl-option value="SWOT">SWOT</sl-option>
           <sl-option value="SENTINEL-6">SENTINEL-6</sl-option>
           <sl-option value="ICON">ICON</sl-option>
           <sl-option value="PRISMA">PRISMA</sl-option>
         </sl-select>
-        <sl-button class="open-drawer">Git Info</sl-button>  
+        <sl-button class="open-drawer">Get more info</sl-button>  
           <embed src = "Light Awash.mp3" loop="true" autostart="true" height="0" width="0">
     </div>
     <div class = 'wrapper'>
         <canvas class="interactive" id = 'canvasContainer'></canvas>
     </div>
-    <sl-drawer label="Drawer" class="drawer-overview" style="background-color: #312e81;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <sl-drawer label="Satellite" class="drawer-overview" style="background-color: #312e81;">
+        <h1 class="drawer-title">James Webb Space Telescope</h1>
+        <img class="drawer-img" src="./img/jwst.jpg">
+        <div class="drawer-data">
+            <b>Launched :</b>
+            <sl-tag class="date" variant="primary">Feburary 2nd, 2008</sl-tag>
+        </div>
+        <div class="drawer-data">
+            <b>Type :</b>
+            <sl-tag class="type" variant="warning">Astronomy</sl-tag>
+        </div>
+        <p class="drawer-content">This is some text about the jwst. it takes cool photos and shit</p>
         <sl-button slot="footer" variant="primary">Close</sl-button>
     </sl-drawer>     
 </body>
