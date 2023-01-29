@@ -1,6 +1,6 @@
 
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
-const API_KEY = 'ZDGVLG-BBSDGG-E737WY-4ZGA';
+const API_KEY = '48EGY4-4JLU5K-V2RLTF-4ZG9';
 
 // Set to true for local development
 let LOCAL_PROXY = true; 
@@ -74,7 +74,7 @@ export const printSats = () => {
 
 // Create array of each satellites updated position
 export async function appendSatArray() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         arr[i] = await fetchSatData(getSat(sats[i]), LOCAL_PROXY, i);
     }
     return arr;

@@ -320,7 +320,7 @@ const updateTracking = (arr) => {
             console.log('update');
             longitude.textContent = arr[i].lon;
             latitude.textContent = arr[i].lat;
-            speed.textContent = arr[i].speed;
+            speed.textContent = arr[i].speed.toFixed(3) + ' m/s';
         }
     }
 }
