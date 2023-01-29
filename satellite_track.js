@@ -1,9 +1,9 @@
 
 // TODO: PUT API_KEY IN ENV VARIABLE SO ISNT ON GITHUB
-const API_KEY = '7Z4RRK-Y35XF9-UUJ9PP-4ZGK';
+const API_KEY = 'LPPD6M-HQUG4Z-2B8D29-4ZGO';
 
 // Set to true for local development
-let LOCAL_PROXY = false; 
+let LOCAL_PROXY = true; 
 
 // Constructor for satellite objects
 function Satellite(name, id, lon, lat, speed) {
@@ -83,7 +83,7 @@ export async function appendSatArray() {
 // Fetches satellite data from API and return Satellite object containing relevant info
 async function fetchSatData(id, proxy, index) {
     let prefix = (proxy) ? '/localhost:8080/' : '';
-    let response = await fetch('https:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
+    let response = await fetch('http:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
     let data = await response.text();
     let jsoned = JSON.parse(data);
     let cord1 = jsoned.positions[0];
