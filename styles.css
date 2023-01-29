@@ -20,6 +20,7 @@ body {
 
 .panel {
     background-color: #072f47;
+    color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     opacity: .6;
     width: 20%;
@@ -39,3 +40,31 @@ body {
     margin-bottom: 10px;
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap: 10px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border: solid white 1px;
+}
+
+.SatTrack {
+    margin-top: 5px;
+    text-align: center;
+    width: 80%;
+    border: solid white 1px;
+}

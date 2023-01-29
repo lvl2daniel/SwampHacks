@@ -28,30 +28,40 @@
 </head>
 <body>
     <div class="panel">
-      <h1>StatTrack</h1>
-      <sl-select class="selector" label="Select a Satellite" value="JWST">
-          <sl-option value="JWST">JWST</sl-option>
-          <sl-option value="ISS">ISS</sl-option>
-          <sl-option value="STARLINK-5196">STARLINK-5196</sl-option>
-          <sl-option value="NOAA-19">NOAA 19</sl-option>
-          <sl-option value="AQUA">AQUA</sl-option>
-          <sl-option value="DRAGON_ENDURANCE_2">DRAGON ENDURANCE 2</sl-option>
-          <sl-option value="SUOMI_NPP">SUOMI NPP</sl-option>
-          <sl-option value="METOP-B">METOP-B</sl-option>
-          <sl-option value="CSS">CSS</sl-option>
-          <sl-option value="TERRA">TERRA</sl-option>
-          <sl-option value="USA-338">USA-338</sl-option>
-          <sl-option value="USA-276">USA-276</sl-option>
-          <sl-option value="TK-1">TK-1</sl-option>
-          <sl-option value="METEOR-M2">METEOR M2</sl-option>
-          <sl-option value="PROGRESS_MS-21">PROGRESS MS-21</sl-option>
-          <sl-option value="LANDSAT">LANDSAT</sl-option>
-          <sl-option value="SWOT">SWOT</sl-option>
-          <sl-option value="SENTINEL-6">SENTINEL-6</sl-option>
-          <sl-option value="ICON">ICON</sl-option>
-          <sl-option value="PRISMA">PRISMA</sl-option>
-        </sl-select>
-        <sl-button class="open-drawer">Get more info</sl-button>  
+      <div class="SatTrack">
+        <h1>SatTrack</h1>
+      </div>
+      
+      <div class="info">
+        <sl-select class="selector" label="Select a Satellite" value="JWST">
+            <sl-option value="JWST">JWST</sl-option>
+            <sl-option value="ISS">ISS</sl-option>
+            <sl-option value="STARLINK-5196">STARLINK-5196</sl-option>
+            <sl-option value="NOAA-19">NOAA 19</sl-option>
+            <sl-option value="AQUA">AQUA</sl-option>
+            <sl-option value="SUOMI_NPP">SUOMI NPP</sl-option>
+            <sl-option value="METOP-B">METOP-B</sl-option>
+            <sl-option value="CSS">CSS</sl-option>
+            <sl-option value="TERRA">TERRA</sl-option>
+            <sl-option value="USA-338">USA-338</sl-option>
+            <sl-option value="USA-276">USA-276</sl-option>
+            <sl-option value="TK-1">TK-1</sl-option>
+            <sl-option value="METEOR-M2">METEOR M2</sl-option>
+            <sl-option value="NAVSTAR-81">NAVSTAR 81</sl-option>
+            <sl-option value="LANDSAT-9">LANDSAT 9</sl-option>
+            <sl-option value="SWOT">SWOT</sl-option>
+            <sl-option value="SENTINEL-6">SENTINEL-6</sl-option>
+            <sl-option value="ICON">ICON</sl-option>
+            <sl-option value="PRISMA">PRISMA</sl-option>
+          </sl-select>
+          <div class="stats">
+              <div id="box"><b>Longitude</b><sl-tag class="lon" variant="primary">-4.899</sl-tag></div>
+              <div id="box"><b>Latitude</b><sl-tag class="lat" variant="primary">134.234</sl-tag></div>
+              <div id="box"><b>Speed</b><sl-tag class="speed" variant="primary">134.234</sl-tag></div>
+          </div> 
+          <sl-button class="open-drawer">Get more info</sl-button>
+
+      </div>
     </div>
     <div class = 'wrapper'>
         <canvas class="interactive" id = 'canvasContainer'></canvas>

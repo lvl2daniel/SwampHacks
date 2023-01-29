@@ -8,7 +8,8 @@ const canvasContainer = document.querySelector('#canvasContainer')
 let arr = [];
 async function update() {
     arr = await appendSatArray();
-    updateTra
+    await console.log(arr);
+    await updateTracking(arr);
 }
 
 const scene = new THREE.Scene();
@@ -138,8 +139,8 @@ const info_title = document.querySelector('.drawer-title');
 const info_img = document.querySelector('.drawer-img');
 const info_date = document.querySelector('.date');
 const info_content = document.querySelector('.drawer-content');
+let selected = 'JWST';
       
-console.log(openButton);
 openButton.addEventListener('click', () => drawer.show());
 closeButton.addEventListener('click', () => drawer.hide());
 
@@ -152,6 +153,15 @@ selector.addEventListener('sl-change', () => {
 const updateDrawer = (name) => {
     info_title.textContent = name;
 };
+
+const updateTracking = (arr) => {
+    for (let i=0; i < arr.length; i++) {
+        console.log(arr[i]);
+        if (arr[i].name == selected) {
+            console.log('found');
+        }
+    }
+}
 
 setTimeout(function () {
     update()
