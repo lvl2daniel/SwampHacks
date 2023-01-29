@@ -75,13 +75,13 @@ export const printSats = () => {
 // Create array of each satellites updated position
 export async function appendSatArray() {
     for (let i = 0; i < 5; i++) {
-        arr[i] = await fetchSatData(getSat(sats[i]), LOCAL_PROXY);
+        arr[i] = await fetchSatData(getSat(sats[i]), LOCAL_PROXY, i);
     }
     return arr;
 }
 
 // Fetches satellite data from API and return Satellite object containing relevant info
-async function fetchSatData(id, proxy) {
+async function fetchSatData(id, proxy, index) {
     let prefix = (proxy) ? '/localhost:8080/' : '';
     let response = await fetch('http:/' + prefix + 'api.n2yo.com/rest/v1/satellite/positions/' + id + '/41.702/-76.014/0/2/&apiKey=' + API_KEY);
     let data = await response.text();
@@ -89,10 +89,11 @@ async function fetchSatData(id, proxy) {
     let cord1 = jsoned.positions[0];
     let cord2 = jsoned.positions[1];
     let speed = getSpeed(cord1.satlatitude, cord1.satlongitude, cord2.satlatitude, cord2.satlongitude);
-    let sat = new Satellite(jsoned.info.satname, id, cord2.satlongitude, cord2.satlatitude, speed);
+    let sat = new Satellite(sats[index], id, cord2.satlongitude, cord2.satlatitude, speed);
 
     return sat;
 }
+
 
 // Implementation of the Haversine formula to translate lon/lat cords to meters
 const getSpeed = (lat1, lon1, lat2, lon2) => { 
@@ -114,8 +115,7 @@ export function calcPosFromLatLon(lat,lon,radius){
     let x = -((radius) * Math.sin(phi)*Math.cos(theta));
     let z = ((radius) * Math.sin(phi)*Math.sin(theta));
     let y = ((radius) * Math.cos(phi));
-       
-    console.log([x,y,z]);
+
     return [x,y,z];
 }
 

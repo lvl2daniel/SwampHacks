@@ -149,6 +149,7 @@ closeButton.addEventListener('click', () => drawer.hide());
 const selector = document.querySelector('.selector');
 selector.addEventListener('sl-change', () => {
     updateDrawer(selector.value);
+    selected = selector.value;
 });
 
 const updateDrawer = (name) => {
@@ -260,10 +261,17 @@ const updateDrawer = (name) => {
 }
 };
 
+// Handle lon/lat/speed tracking
+const longitude = document.querySelector('.lon');
+const latitude = document.querySelector('.lat');
+const speed = document.querySelector('.speed');
 const updateTracking = (arr) => {
     for (let i=0; i < arr.length; i++) {
         if (arr[i].name == selected) {
-            console.log('found');
+            console.log(arr[i]);
+            longitude.textContent = arr[i].lon;
+            latitude.textContent = arr[i].lat;
+            speed.textContent = arr[i].speed;
         }
     }
 }
@@ -279,16 +287,4 @@ setInterval(async function () {
             updateObject(SatArr[i], result[0], result[1], result[2])
         }
 }, 4000);
-
-setInterval(function (){
-    initialize()
-}, 5000);
-
-setInterval(function () {
-    for (let i = 0; i < arr.length; i++)
-        {
-            let result = calcPosFromLatLon(arr[i].lat, arr[i].lon, 5.3);
-            updateObject(SatArr[i], result[0], result[1], result[2])
-        }
-}, 5000);*/
 
